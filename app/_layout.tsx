@@ -11,56 +11,54 @@ import * as Linking from 'expo-linking';
 import * as WebBrowser from 'expo-web-browser';
 import Footer from './(tabs)/_footer';
 import Constants from 'expo-constants';
+import * as Notifications from 'expo-notifications';
+import axios from 'axios';
 
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
 //PushNotification için cihazdan izin istendi
-// const registerForPushNotificationsAsync = async (token: string) => {
-//   try {
-//     const { status: existingStatus } = await Notifications.getPermissionsAsync();
-//     let finalStatus = existingStatus;
+const registerForPushNotificationsAsync = async () => {
+  try {
+    const { status: existingStatus } = await Notifications.getPermissionsAsync();
+    let finalStatus = existingStatus;
 
-//     if (existingStatus !== 'granted') {
-//       const { status } = await Notifications.requestPermissionsAsync();
-//       finalStatus = status;
-//     }
+    if (existingStatus !== 'granted') {
+      const { status } = await Notifications.requestPermissionsAsync();
+      finalStatus = status;
+    }
 
-//     if (finalStatus !== 'granted') {
-//       alert('Bildirim izni verilmedi!');
-//       return;
-//     }
+    if (finalStatus !== 'granted') {
+      alert('Bildirim izni verilmedi!');
+      return;
+    }
 
-//     var projectId = Constants.expoConfig?.extra?.eas?.projectId; // Expo EAS kullanıyorsan
-//     // var projectId = Updates.manifest?.extra?.eas?.projectId;
-//     // var projectId = "7c06c142-b9fe-4fb8-af22-3ce9d043397f";
-//     if (projectId != null && projectId != '') {
-//       var pushNotificationToken = (await Notifications.getExpoPushTokenAsync({ projectId })).data;
-//       // alert('Expo Push Token:'+ pushNotificationToken);
-//       await sendTokenToBackend(pushNotificationToken, token);
-//     }
-//   } catch (error) {
-//     alert('Bildirim kaydı sırasında hata:' + error);
-//   }
-// };
+    var projectId = Constants.expoConfig?.extra?.eas?.projectId; // Expo EAS kullanıyorsan
+    if (projectId != null && projectId != '') {
+      var pushNotificationToken = (await Notifications.getExpoPushTokenAsync({ projectId })).data;
+      // alert('Expo Push Token:'+ pushNotificationToken);
+      await sendTokenToBackend(pushNotificationToken);
+    }
+  } catch (error) {
+    alert('Bildirim kaydı sırasında hata:' + error);
+  }
+};
 
 //Backende pushNotification tokenı gönder
-// const sendTokenToBackend = async (token: string, apiToken: string) => {
-//   try {
-//     // alert('Token backend\'e gönderiliyor!');
-//     const response = await axios.post('https://yatirim.fongogo.com/Device/InsertDevice', {
-//       expoPushToken: token,
-//       platform: Platform.OS,
-//       model: Platform.OS === 'ios' ? 'iPhone' : 'Android Device',
-//       apiToken: apiToken
-//     });
-//   } catch (error) {
-//     alert('Token backend\'e gönderilirken hata oluştu:' + error);
-//   }
-// };
-
-
+const sendTokenToBackend = async (token: string) => {
+  try {
+    // alert('Token backend\'e gönderiliyor!');
+    var pushRequest={
+      expoPushToken: token,
+      platform: Platform.OS,
+      model: Platform.OS === 'ios' ? 'iPhone' : 'Android Device',
+    };
+    const response = await axios.post('https://ringinsesi.com.tr/Device/InsertDevice', pushRequest);
+  } catch (error) {
+    alert('Token backend\'e gönderilirken hata oluştu:' + error);
+  }
+};
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
@@ -75,7 +73,6 @@ export default function RootLayout() {
 
   
   useEffect(() => {
-    console.log('onBackPress')
     const onBackPress = () => {
       if (webViewRef.current) {
         webViewRef.current.goBack();
@@ -88,6 +85,10 @@ export default function RootLayout() {
     return () => {
       BackHandler.removeEventListener("hardwareBackPress", onBackPress);
     };
+  }, []);
+
+  useEffect(() => {    
+    registerForPushNotificationsAsync();
   }, []);
 
   useEffect(() => {

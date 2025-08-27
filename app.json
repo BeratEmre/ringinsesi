@@ -1,18 +1,23 @@
 {
   "expo": {
+    "owner": "ringinsesi",
     "name": "ringinsesi",
     "slug": "ringinsesi",
-    "version": "1.0.1",
+    "version": "1.0.3",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/logo_kare.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true
     },
-    "android": {
-      "versionCode":3,
+    "notification": {
+        "icon": "./assets/images/ringinsesi_icon.png",
+        "color": "#ffffff"
+      },
+    "android": {      
+      "googleServicesFile": "./assets/file/google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/ringinsesi_icon.png",
         "backgroundColor": "#ffffff"

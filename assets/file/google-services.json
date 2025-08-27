@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "451160889313",
+    "project_id": "ringinsesi",
+    "storage_bucket": "ringinsesi.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:451160889313:android:4dac9729065bf2b601e4a0",
+        "android_client_info": {
+          "package_name": "com.beft9.ringinsesi"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7nCPKDGp-ahG24eC-1sTfbUImucPuHkU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
