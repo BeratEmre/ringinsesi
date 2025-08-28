@@ -3,7 +3,7 @@
     "owner": "ringinsesi",
     "name": "ringinsesi",
     "slug": "ringinsesi",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "orientation": "portrait",
     "icon": "./assets/images/logo_kare.png",
     "scheme": "myapp",
@@ -16,7 +16,7 @@
         "icon": "./assets/images/ringinsesi_icon.png",
         "color": "#ffffff"
       },
-    "android": {      
+    "android": {  
       "googleServicesFile": "./assets/file/google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/ringinsesi_icon.png",
