@@ -123,7 +123,7 @@ export default function RootLayout() {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: 'black' }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: 'black', marginBottom:40,marginTop:25 }}>
       <StatusBar backgroundColor="black" barStyle="light-content" />
       <WebView
         ref={webViewRef}

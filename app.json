@@ -3,7 +3,7 @@
     "owner": "ringinsesi",
     "name": "ringinsesi",
     "slug": "ringinsesi",
-    "version": "1.0.5",
+    "version": "1.0.7",
     "orientation": "portrait",
     "icon": "./assets/images/logo_kare.png",
     "scheme": "myapp",
@@ -22,7 +22,8 @@
         "foregroundImage": "./assets/images/ringinsesi_icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.beft9.ringinsesi"
+      "package": "com.beft9.ringinsesi",
+      "versionCode": 10
     },
     "web": {
       "bundler": "metro",
@@ -38,6 +39,15 @@
           "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
+        }
+      ],
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "targetSdkVersion": 35,
+            "compileSdkVersion": 35
+          }
         }
       ]
     ],
