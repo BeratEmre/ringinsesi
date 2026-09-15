@@ -3,7 +3,7 @@
     "owner": "ringinsesi",
     "name": "ringinsesi",
     "slug": "ringinsesi",
-    "version": "1.0.9",
+    "version": "1.1.0",
     "orientation": "portrait",
     "icon": "./assets/images/logo_kare.png",
     "scheme": "ringinsesi",
@@ -18,7 +18,7 @@
         "backgroundColor": "#ffffff"
       },
       "package": "com.beft9.ringinsesi",
-      "versionCode": 12
+      "versionCode": 13
     },
     "web": {
       "bundler": "metro",
@@ -47,7 +47,8 @@
       ],
       "expo-font",
       "expo-status-bar",
-      "expo-web-browser"
+      "expo-web-browser",
+      "./plugins/withAndroidQueries"
     ],
     "experiments": {
       "typedRoutes": true

@@ -11,8 +11,7 @@ export default function HomeScreen() {
           // Do something when the screen is focused
           setCurrentUrl('https://ringinsesi.com.tr/');
           return () => {
-            // Do something when the screen is unfocused
-            // Useful for cleanup functions
+            console.log('Screen was unfocused');
           };
         }, [])  
       );
