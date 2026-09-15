@@ -1,18 +1,16 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect, useRef, useState } from 'react';
 import 'react-native-reanimated';
 import { useColorScheme } from '@/hooks/useColorScheme';
 import WebView, { WebViewMessageEvent, WebViewNavigation } from 'react-native-webview';
-import { SafeAreaView, View, StatusBar, BackHandler, Button, Alert, Platform } from 'react-native';
-import * as Linking from 'expo-linking';
-import * as WebBrowser from 'expo-web-browser';
 import Footer from './(tabs)/_footer';
 import Constants from 'expo-constants';
 import * as Notifications from 'expo-notifications';
 import axios from 'axios';
+import { SafeAreaView, View, StatusBar, BackHandler, Button, Alert, Platform } from 'react-native';
+import React from 'react';
+
 
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
@@ -29,21 +27,18 @@ const registerForPushNotificationsAsync = async () => {
       finalStatus = status;
     }
 
-    if (finalStatus !== 'granted') {
-      alert('Bildirim izni verilmedi!');
-      return;
-    }
+    if (finalStatus !== 'granted') return;
 
-    var projectId = Constants.expoConfig?.extra?.eas?.projectId; // Expo EAS kullanıyorsan
+    var projectId = Constants.expoConfig?.extra?.eas?.projectId;
     if (projectId != null && projectId != '') {
       var pushNotificationToken = (await Notifications.getExpoPushTokenAsync({ projectId })).data;
-      // alert('Expo Push Token:'+ pushNotificationToken);
       await sendTokenToBackend(pushNotificationToken);
     }
   } catch (error) {
-    alert('Bildirim kaydı sırasında hata:' + error);
+    console.error(error);
   }
 };
+
 
 //Backende pushNotification tokenı gönder
 const sendTokenToBackend = async (token: string) => {
@@ -83,7 +78,7 @@ export default function RootLayout() {
 
     BackHandler.addEventListener("hardwareBackPress", onBackPress);
     return () => {
-      BackHandler.removeEventListener("hardwareBackPress", onBackPress);
+      BackHandler.addEventListener("hardwareBackPress", onBackPress);
     };
   }, []);
 

@@ -1,6 +1,6 @@
 import { useFocusEffect } from 'expo-router';
 import React, { useState } from 'react';
-import { StyleSheet, SafeAreaView } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { WebView } from 'react-native-webview';
 
 export default function HomeScreen() {
@@ -18,7 +18,7 @@ export default function HomeScreen() {
       );
 
     return (
-        <SafeAreaView style={styles.container}>
+        <SafeAreaView  edges={['top', 'bottom']}>
         <WebView
             source={{ uri: currentUrl }}
             style={{ flex: 1 }}
@@ -27,9 +27,3 @@ export default function HomeScreen() {
     );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    paddingTop: 24,
-    flex: 1,
-  },
-});

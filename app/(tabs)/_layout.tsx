@@ -7,14 +7,15 @@ import { IconSymbol } from '@/components/ui/IconSymbol';
 import TabBarBackground from '@/components/ui/TabBarBackground';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
+import { FontAwesome6 } from '@expo/vector-icons';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
-
+  const colors = colorScheme === 'dark' ? Colors.dark : Colors.light;
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+        tabBarActiveTintColor: colors.tint,
         headerShown: false,
         tabBarButton: HapticTab,
         tabBarBackground: TabBarBackground,
@@ -37,7 +38,7 @@ export default function TabLayout() {
         name="ranking"
         options={{
           title: 'Sıralama',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="list.fill" color={color} />,
+          tabBarIcon: ({ color }) => <FontAwesome6 name="ranking-star" size={28} color={color} />
         }}
       />
       <Tabs.Screen

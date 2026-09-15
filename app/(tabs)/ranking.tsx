@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { StyleSheet, SafeAreaView } from 'react-native';
 import { WebView } from 'react-native-webview';
 import { useFocusEffect } from 'expo-router';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function RankingScreen({  }) {
   const [currentUrl, setCurrentUrl] = useState('https://ringinsesi.com.tr/BoxerRanking/Index');
@@ -19,7 +19,7 @@ export default function RankingScreen({  }) {
 
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView  edges={['top', 'bottom']}>
 
       <WebView 
         source={{ uri: currentUrl }} 
@@ -29,9 +29,3 @@ export default function RankingScreen({  }) {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    paddingTop: 24,
-    flex: 1,
-  },
-});

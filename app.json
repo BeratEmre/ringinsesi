@@ -3,32 +3,27 @@
     "owner": "ringinsesi",
     "name": "ringinsesi",
     "slug": "ringinsesi",
-    "version": "1.0.7",
+    "version": "1.0.9",
     "orientation": "portrait",
     "icon": "./assets/images/logo_kare.png",
-    "scheme": "myapp",
+    "scheme": "ringinsesi",
     "userInterfaceStyle": "automatic",
-    "newArchEnabled": true,
     "ios": {
       "supportsTablet": true
     },
-    "notification": {
-        "icon": "./assets/images/ringinsesi_icon.png",
-        "color": "#ffffff"
-      },
-    "android": {  
+    "android": {
       "googleServicesFile": "./assets/file/google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/ringinsesi_icon.png",
         "backgroundColor": "#ffffff"
       },
       "package": "com.beft9.ringinsesi",
-      "versionCode": 10
+      "versionCode": 12
     },
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./assets/images/ringinsesi_icon.png"
     },
     "plugins": [
       "expo-router",
@@ -45,11 +40,14 @@
         "expo-build-properties",
         {
           "android": {
-            "targetSdkVersion": 35,
-            "compileSdkVersion": 35
+            "targetSdkVersion": 36,
+            "compileSdkVersion": 36
           }
         }
-      ]
+      ],
+      "expo-font",
+      "expo-status-bar",
+      "expo-web-browser"
     ],
     "experiments": {
       "typedRoutes": true
